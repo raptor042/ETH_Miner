@@ -55,6 +55,12 @@ contract Miner {
 
         apy = _apy;
 
+        require(tFee <= 5, "Transaction fee cannot exceed 5%");
+
+        require(rFee <= 5, "Referral fee cannot exceed 5%");
+
+        require(pFee <= 50, "Penalty fee cannot exceed 50%");
+
         transaction_fee = (tFee  * 1 ether) / 1000;
 
         referral_fee = rFee;
@@ -80,14 +86,20 @@ contract Miner {
     }
 
     function changeTransactionFee(uint256 tFee) public onlyOwner {
+        require(tFee <= 5, "Transaction fee cannot exceed 5%");
+
         transaction_fee = (tFee / 1000) * 1 ether;
     }
 
     function changeReferralFee(uint256 rFee) public onlyOwner {
+        require(rFee <= 5, "Referral fee cannot exceed 5%");
+
         referral_fee = rFee;
     }
 
     function changePenaltyFee(uint256 pFee) public onlyOwner {
+        require(pFee <= 50, "Penalty fee cannot exceed 50%");
+        
         penalty_fee = pFee;
     }
 
