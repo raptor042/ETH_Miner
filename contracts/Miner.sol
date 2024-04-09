@@ -334,6 +334,8 @@ contract Miner {
 
         _user.roi = 0;
 
+        _user.referralBalance = 0;
+
         _user.lastClaimed = block.timestamp;
 
         (bool os, ) = payable(transactionFeeWallet).call{value: transaction_fee}("");
