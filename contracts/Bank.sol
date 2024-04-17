@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.24;
 
 contract Bank {
@@ -25,6 +26,8 @@ contract Bank {
     }
 
     function setAdmin(address _admin) public onlyOwner {
+        require(_admin != address(0), "Do not pass a zero address.");
+
         admin = _admin;
     }
 
